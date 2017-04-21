@@ -11,15 +11,17 @@ apt-get upgrade -y
 apt-get install $PACKAGES -y
 pip install twython
 
+###########
+# TODO: fix - camera parameters aren't in boot.txt to begin with, so following code doesn't work
+###########
 
-# Enable camera interface if it is not already.
+# Make sure camera interface is enabled
 if grep "start_x=1" /boot/config.txt
 then
 	break
 else
 	sed -i "s/start_x=0/start_x=1/g" /boot/config.txt
 fi
-
 # Camera requires 128MB GPU memory. Search for the gpu_mem parameter and replace the line.
 if grep "gpu_mem=128" /boot/config.txt
 then
