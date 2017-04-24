@@ -81,7 +81,7 @@ For now these variables are programmed into the script, but it would be trivial 
 
 
 ## Pi Zero W WiFi and SSH on first boot
-These instructions will work for Raspberry Pis that have WiFi on-baord eg. Pi 3 B, Zero W.
+These instructions will work for Raspberry Pis that have WiFi on-board eg. Pi 3 B, Zero W.
 **Complete the following steps on your computer. We will be creating and modifying files in the small "BOOT" partition of the SD card. On Windows, this is the drive that appears when you plug in your Raspbian SD card.**
   - Flash SD card with Jessie Lite
   - Open the SD card in your File Explorer.
