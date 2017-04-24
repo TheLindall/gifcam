@@ -46,8 +46,8 @@ Here I'm assuming we're starting with a clean install of Raspbian Jessie Lite. I
   - unzip and rename the project: `unzip master.zip && mv gifcam-master gifcam`
   - Run the installer script: `sudo ~/gifcam/installer.sh` (This will take several minutes)
   - Run the gifcam project to make sure everything works fine `python ~/gifcam/gifcam.py`
-  - Proceed to [Twitter Configuration](#Twitter-Configuration)
-  - Now proceed to [Run the gifcam at boot](#Run-the-gifcam-at-boot)
+  - Proceed to [Twitter Configuration](#twitter-configuration)
+  - Now proceed to [Run the gifcam at boot](#run-the-gifcam-at-boot)
 
 
 ### Manual Installation
