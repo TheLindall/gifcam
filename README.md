@@ -37,7 +37,8 @@ For now these variables are programmed into the script, but it would be trivial 
   - Make sure you're in the user directory: `cd ~`
   - Download the gifcam project: `wget https://github.com/michaelruppe/gifcam/archive/master.zip`
   - unzip and rename the project: `unzip master.zip && mv gifcam-master gifcam`
-  - Run the installer script: `sudo ~/gifcam/installer.sh` (This will take a long time if your pi needs to download updates, it runs `apt-get upgrade`)
+  - Run the installer script: `sudo ~/gifcam/installer.sh` (This will take a long time if your pi needs to download updates
+  - After installation finishes, the Pi will reboot.
   - Run the gifcam project to make sure everything works fine `python ~/gifcam/gifcam.py`
   - Proceed to [Twitter Configuration](#twitter-configuration)
   - Now proceed to [Run the gifcam at boot](#run-the-gifcam-at-boot)
