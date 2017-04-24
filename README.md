@@ -5,10 +5,10 @@
 - Status LEDs keep the user informed as to what's going on
 
 ## Quick Links
- - [How to Use the Camera](#How-to-Use-the-Camera)
- - [Change Camera Behaviour](#Change-Camera-Behaviour)
- - [Easy Installation](#Easy-Installation)
- - [Connect your Pi Zero W to WiFi on first-boot](#Pi-Zero-W:-WiFi-and-SSH-on-first-boot)
+ - [How to Use the Camera](#how-to-use-the-camera)
+ - [Change Camera Behaviour](#change-camera-behaviour)
+ - [Easy Installation](#easy-installation)
+ - [Connect your Pi Zero W to WiFi on first-boot](#pi-zero-w:-wifi-and-ssh-on-first-boot)
 
 ## How to Use the Camera
 - Power on the camera.
