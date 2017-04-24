@@ -34,6 +34,7 @@ For now these variables are programmed into the script, but it would be trivial 
 
 
 ## Easy Installation
+  - Make sure you're in the user directory: `cd ~`
   - Download the gifcam project: `wget https://github.com/michaelruppe/gifcam/archive/master.zip`
   - unzip and rename the project: `unzip master.zip && mv gifcam-master gifcam`
   - Run the installer script: `sudo ~/gifcam/installer.sh` (This will take several minutes)
