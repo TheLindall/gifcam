@@ -4,7 +4,13 @@
 - The GIF can be made to run START => END or "rebound" START <=> END
 - Status LEDs keep the user informed as to what's going on
 
-## How To Use the Camera
+## Quick Links
+ - [How to Use the Camera](#How-to-Use-the-Camera)
+ - [Change Camera Behaviour](#Change-Camera-Behaviour)
+ - [Easy Installation](#Easy-Installation)
+ - [Connect your Pi Zero W to WiFi on first-boot](#Pi-Zero-W:-WiFi-and-SSH-on-first-boot)
+
+## How to Use the Camera
 - Power on the camera.
 - The button will illuminate when the camera is ready to make a GIF.
 - When you press the button, the button LED will strobe to indicate that the camera is recording.
@@ -35,16 +41,23 @@ For now these variables are programmed into the script, but it would be trivial 
 Detailed steps on how to get your Pi Zero W up and running without a keyboard, monitor or mouse are covered at the bottom of this text, in the _In-Depth Instructions_
 Here I'm assuming we're starting with a clean install of Raspbian Jessie Lite. If you're running the full version of Raspbian instead, several of these steps will be redundant - it won't hurt to execute each install command though, you'll just be notified that you already have a given software package.
 
-### Install Dependencies
-  - Run -- `sudo apt-get update`
-  - Run -- `sudo apt-get upgrade`
-  - Install PiCamera -- `sudo apt-get install python-picamera`
-  - Make sure camera interface is enabled with `sudo raspi-config` > Interfacing Options > Camera
-  - Install GraphicsMagick -- `sudo apt-get install graphicsmagick`
-  - Install Gitcore -- `sudo apt-get install git-core`
-  - Install GifCam -- `git clone https://github.com/michaelruppe/gifcam.git`
-  - Install pip: `sudo apt-get install python-pip`
+### Easy Installation
+  - Download the gifcam project: `wget https://github.com/michaelruppe/gifcam/archive/master.zip`
+  - unzip and rename the project: `unzip master.zip && mv gifcam-master gifcam`
+  - Run the installer script: `sudo ~/gifcam/installer.sh` (This will take several minutes)
+  - Run the gifcam project to make sure everything works fine `python ~/gifcam/gifcam.py`
+  - Proceed to [Twitter Configuration](#Twitter-Configuration)
+  - Now proceed to [Run the gifcam at boot](#Run-the-gifcam-at-boot)
+
+
+### Manual Installation
+  - Run -- `sudo apt-get update && sudo apt-get upgrade -y`
+  - Install packages -- `sudo apt-get install python-picamera graphicsmagick python-pip git-core -y`
   - Install twython: `sudo pip install twython` -- https://github.com/ryanmcgrath/twython
+  - Make sure camera interface is enabled with `sudo raspi-config` > Interfacing Options > Camera
+  - Install GifCam -- `git clone https://github.com/michaelruppe/gifcam.git`
+
+### Twitter Configuration
   - Create a twitter app at https://apps.twitter.com/ and populate `gifcam.py` with the necessary credentials. If you don't want to tweet your GIFs, don't create the app, and disable the functionality by setting `tweet = False` in `gifcam.py`.
   - Optional; Install mount USB if you want to use the `gifcamusb.py` script instead (no twitter, good for Pis without wifi. http://www.raspberrypi-spy.co.uk/2014/05/how-to-mount-a-usb-flash-disk-on-the-raspberry-pi/
   - To access your GIFs over WiFi, configure the gif directory as a samba shared directory
@@ -55,9 +68,6 @@ Here I'm assuming we're starting with a clean install of Raspbian Jessie Lite. I
     - You may be prompted to select a text editor if you haven't edited the crontab before. You'll be prompted for a selection between 1 and 3. I choose nano, which is 2 - this is also the default choice, indicated by the `[2]` .
   - add this line to end of that file - `@reboot sh /home/pi/gifcam/launcher.sh`
   
-  
-### Permissions:
-  - If hitting "permission denied" run - `sudo chown -R pi /home/pi/gifcam/`
   
 ### Optional: Setup a Samba shared directory to access your GIFs over WiFi
   - Install samba: `sudo apt-get install samba samba-common-bin`
@@ -75,7 +85,8 @@ Here I'm assuming we're starting with a clean install of Raspbian Jessie Lite. I
   - Restart your samba service with `sudo /etc/init.d/smbd stop` then `sudo /etc/init.d/smbd start` (or just reboot with `sudo reboot`)
   - You can should now be able to access your networked drive. On Windows, enter \\gifcam into your explorer address bar and you should be prompted for the **samba** username and password you created earlier.
   
-## In-Depth instructions (Pi Zero W from first boot. These instructions will work for other models except for USB OTG steps)
+## Pi Zero W: WiFi and SSH on first boot
+These instructions will work for other models except for USB OTG steps)
 **Complete the following steps on your computer. We will be creating and modifying files in the small "BOOT" partition of the SD card. On Windows, this is the drive that appears when you plug in your SD card.**
   - Flash SD card with Jessie Lite
   - Open the SD card in your File Explorer.
@@ -101,5 +112,4 @@ Here I'm assuming we're starting with a clean install of Raspbian Jessie Lite. I
 
 ## ToDo:
 - working directory referencing, this is so you can cleanup source images with: `rm $workingDir/\*.jpg` rather than from within the repo main directory
-- samba shared folder to pull images off over wifi (Pi Zero W)
 - smart twitter handling for when gifs are taken and you're not on wifi? If an image upload fails it gets pushed onto a re-attempt stack, which attempts to pop each time a gif is taken / an upload button pressed!
