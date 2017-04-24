@@ -52,10 +52,10 @@ For now these variables are programmed into the script, but it would be trivial 
   - Install GifCam -- `git clone https://github.com/michaelruppe/gifcam.git`
 
 ## Twitter Configuration
-  - Create a twitter app at https://apps.twitter.com/ and populate `gifcam.py` with the necessary credentials. If you don't want to tweet your GIFs, don't create the app, and disable the functionality by setting `tweet = False` in `gifcam.py`.
-  - Optional; Install mount USB if you want to use the `gifcamusb.py` script instead (no twitter, good for Pis without wifi. http://www.raspberrypi-spy.co.uk/2014/05/how-to-mount-a-usb-flash-disk-on-the-raspberry-pi/
-  - To access your GIFs over WiFi, configure the gif directory as a samba shared directory
-
+  - Create a twitter app at https://apps.twitter.com/ (Create New App. Name your app and go to the Keys and Access Tokens tab)
+  - Populate `gifcam.py` with the necessary credentials. 
+  - Within `gifcam.py`, locate the *Behaviour Variables* section and set `tweet = True`
+  
 
 ## Run the gifcam at boot:
   - Run -- `crontab -e`
@@ -78,7 +78,8 @@ For now these variables are programmed into the script, but it would be trivial 
   - Create samba users: execute `sudo smbpasswd -a pi` and enter your desired password. Whether you choose to keep this as the default (unsecure) is up to you. This will be the username and password required to access the shared folder.
   - Restart your samba service with `sudo /etc/init.d/smbd stop` then `sudo /etc/init.d/smbd start` (or just reboot with `sudo reboot`)
   - You can should now be able to access your networked drive. On Windows, enter \\gifcam into your explorer address bar and you should be prompted for the **samba** username and password you created earlier.
-  
+
+
 ## Pi Zero W WiFi and SSH on first boot
 These instructions will work for Raspberry Pis that have WiFi on-baord eg. Pi 3 B, Zero W.
 **Complete the following steps on your computer. We will be creating and modifying files in the small "BOOT" partition of the SD card. On Windows, this is the drive that appears when you plug in your Raspbian SD card.**
