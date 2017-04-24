@@ -86,8 +86,8 @@ Here I'm assuming we're starting with a clean install of Raspbian Jessie Lite. I
   - You can should now be able to access your networked drive. On Windows, enter \\gifcam into your explorer address bar and you should be prompted for the **samba** username and password you created earlier.
   
 ## Pi Zero W WiFi and SSH on first boot
-These instructions will work for other models except for USB OTG steps)
-**Complete the following steps on your computer. We will be creating and modifying files in the small "BOOT" partition of the SD card. On Windows, this is the drive that appears when you plug in your SD card.**
+These instructions will work for Raspberry Pis that have WiFi on-baord eg. Pi 3 B, Zero W.
+**Complete the following steps on your computer. We will be creating and modifying files in the small "BOOT" partition of the SD card. On Windows, this is the drive that appears when you plug in your Raspbian SD card.**
   - Flash SD card with Jessie Lite
   - Open the SD card in your File Explorer.
   - Setup USB OTG network access. This will allow you to always SSH into the Pi via a direct connection through USB - useful if you have problems with WiFi at any point.
