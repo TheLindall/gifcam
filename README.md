@@ -8,7 +8,7 @@
  - [How to Use the Camera](#how-to-use-the-camera)
  - [Change Camera Behaviour](#change-camera-behaviour)
  - [Easy Installation](#easy-installation)
- - [Connect your Pi Zero W to WiFi on first-boot](#pi-zero-w:-wifi-and-ssh-on-first-boot)
+ - [Connect your Pi Zero W to WiFi on first-boot](#pi-zero-w-wifi-and-ssh-on-first-boot)
 
 ## How to Use the Camera
 - Power on the camera.
@@ -85,7 +85,7 @@ Here I'm assuming we're starting with a clean install of Raspbian Jessie Lite. I
   - Restart your samba service with `sudo /etc/init.d/smbd stop` then `sudo /etc/init.d/smbd start` (or just reboot with `sudo reboot`)
   - You can should now be able to access your networked drive. On Windows, enter \\gifcam into your explorer address bar and you should be prompted for the **samba** username and password you created earlier.
   
-## Pi Zero W: WiFi and SSH on first boot
+## Pi Zero W WiFi and SSH on first boot
 These instructions will work for other models except for USB OTG steps)
 **Complete the following steps on your computer. We will be creating and modifying files in the small "BOOT" partition of the SD card. On Windows, this is the drive that appears when you plug in your SD card.**
   - Flash SD card with Jessie Lite
