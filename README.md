@@ -1,3 +1,8 @@
+## Changes
+- 1
+- 2
+- 3  
+
 ## Features
 - Creates a GIF at the press of a button and saves it locally
 - Optionally tweet the created GIF
