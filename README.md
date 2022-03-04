@@ -1,3 +1,18 @@
+## What's this version got?
+This a minor de-update based on Nick and Michael's work. 
+- I've removed the Twitter integration of the original projects
+- I've added the hardware controls to change behaviors 
+- I've added intructions to downlaod your GIFs straight to your Iphone
+- Used newer hardware (Rapberry Pi Zero W 2)
+- Used newer software (Raspberry Pi OS Legacy Light - Buster)   
+
+If you want:
+- Auto twitter upload
+- SSH instructions 
+- A simplier setup 
+
+I suggest looking at the original projects by Nick (https://github.com/nickbrewer/gifcam) and <br>Micheal (https://github.com/michaelruppe/gifcam)
+
 ## Features
 - Creates a GIF at the press of a button and saves it locally
 - Access the GIFs through Samba and WiFi
@@ -72,8 +87,9 @@ Use the following commands to get GifCam up and running
     - Use `sudo hostname -I` to find the IP address for your Raspberry pi.
     - Make sure your iPhone is connected to the same WiFi network as your Raspberry Pi
     - Open the Files app on your iphone and select "Connect to server" from the top-right menu.
-    - Enter `smb://[your Pi's ip]`(eg smb://190.111.2.333) into the Server field and then use the Samba user credentials you just set up.
-  -On Windows, enter \\gifcam into your explorer address bar and you should be prompted for the **samba** username and password you created earlier.
+    - Enter "smb://[your Pi's IP here]" into the Server field and then use the Samba user credentials you just set up.
+    - This can be a bit finicky, you may need to close the files app, or eject and re-connect to the server. 
+  - On Windows, enter \\gifcam into your explorer address bar and you should be prompted for the **samba** username and password you created earlier.
 
 
 ## Run the gifcam at boot
