@@ -9,9 +9,11 @@ This a minor de-update based on Nick and Michael's work.
 If you want:
 - Auto twitter upload
 - SSH instructions 
-- A simplier setup 
-
+- A simplier setup
 I suggest looking at the original projects by Nick (https://github.com/nickbrewer/gifcam) and <br>Micheal (https://github.com/michaelruppe/gifcam)
+
+If you want to see the orginal project and build instructions see here (https://www.hackster.io/nick-brewer/pix-e-gif-camera-323965)
+
 
 ## Features
 - Creates a GIF at the press of a button and saves it locally
@@ -99,30 +101,3 @@ Use the following commands to get GifCam up and running
 
 ### Permissions
   - If hitting "permission denied" run: `Sudo shown -R pi/home/pi/gifcam`
-
-
----
-
-
-## Pi Zero W WiFi and SSH on first boot
-These instructions will work for Raspberry Pis that have WiFi on-board eg. Pi 3 B, Zero W.
-**Complete the following steps on your computer. We will be creating and modifying files in the small "BOOT" partition of the SD card. On Windows, this is the drive that appears when you plug in your Raspbian SD card.**
-  - Flash SD card with Jessie Lite
-  - Open the SD card in your File Explorer.
-  - Setup USB OTG network access. This will allow you to always SSH into the Pi via a direct connection through USB - useful if you have problems with WiFi at any point.
-    - Open the file `config.txt` and add to the bottom `dtoverlay=dwc2` on a new line, then save the file.
-    - Open `cmdline.txt`. Very careful with the syntax in this file: Each parameter is seperated by a single space (it does not use newlines). Insert `modules-load=dwc2,g_ether` after rootwait. Make sure there is a single space before and after this piece of text.
-  - Setup WiFi access for first boot:
-    - Create a file called `wpa_supplicant.conf` in the boot parition.
-    - Paste the following text into the file, filling in your own WiFi SSID (network name) and password.
-      ```
-      network={
-        ssid="SSID"
-        psk="password"
-        key_mgmt=WPA-PSK
-      }
-      ```
-    - You can follow this process at any time to overwrite the WiFi credentials if you have to.
-  - Enable SSH: create an empty file called `ssh` in the boot partition. Make sure there is no file extension.
-  - Power the Pi and open an SSH session. If you're accessing over wifi, SSH to `pi@raspberrypi`. If you're accessing over USB OTG, SSH to `pi@raspberrypi.local`
-  - On first boot give the Pi a meaningful hostname, like `gifcam`. This will avoid hostname conflicts on your network if you deploy another Raspberry Pi.
