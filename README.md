@@ -30,21 +30,21 @@ For now these variables are programmed into the script, but it would be trivial 
 # Basic Setup
 
 
-### Raspberry Pi setup as of this writing
-
+## Raspberry Pi setup as of this writing
   - **Model:** Raspberry Pi Zero W 2 
-  - **OS:** Raspberry Pi Os Legacy Lite (Buster)
+  - **OS:** Raspberry Pi OS Legacy Lite (Buster)
 
 
-## Pi first boot w/ monitor
-If you are setting up your Rapsberry Pi Zero for the first time:
-  - Use he command `sudo raspi-config` to: 
-    -   Change your keyboard layout to the correct one
+## New to Raspberry Pi & and setting up your Pi with a monitor: 
+If you are setting up your Rapsberry Pi Zero for the first time, with a monitor, and you didn't pre-configure anythign do this:
+  - Use the command `sudo raspi-config` to: 
+    -   Change your keyboard layout to  to match yours
     -   Connect to your WiFi network
-    -   Change the hostname to something like gifcam
+    -   Change the hostname to something like gifcam (just makes it easier to identify on the network)
 
 
-## Installing dependencies
+## Install dependencies
+Use the following commands to get GifCam up and running
   - Run: `sudo apt-get update -y`
   - Run: `sudo apt-get upgrade -y`
   - Enable the camera interface: `sudo raspi-config` > Interfacing Options > Camera > Yes
@@ -53,11 +53,10 @@ If you are setting up your Rapsberry Pi Zero for the first time:
   - Install Gitcore: `sudo apt-get install git-core`
   - Install GifCam: `git clone https://github.com/thelindall/gifcam.git`
 
-
 ## Setup a Samba shared directory to access your GIFs over WiFi 
-  - Install samba: `sudo apt-get install samba samba-common-bin`-y
+  - Install samba: `sudo apt-get install samba samba-common-bin -y`
   - Create a backup of the default samba configuration: <br> `sudo cp /etc/samba/smb.conf /etc/samba/smb.conf_$(date +%F)` <br> This will create a copy, with today’s date on the extension.
-  -  Set the gif directory as a shared directory: <br> `sudo nano /etc/samba/smb.conf` <br> and add the following chunk: <br>
+  -  Set the gif directory as a shared directory: <br> `sudo nano /etc/samba/smb.conf` <br> and add the following chunk to the bottom of the doc: <br>
 
 ```
 [gifs]
@@ -66,10 +65,14 @@ If you are setting up your Rapsberry Pi Zero for the first time:
   browseable = yes
   read only = no
 ```
-  - Create samba users: execute `sudo smbpasswd -a pi` and enter your desired password. Whether you choose to keep this as the default (unsecure) is up to you. This will be the username and password required to access the shared folder.
+  - Create a samba user: `sudo smbpasswd -a pi` and enter your desired password. Whether you choose to keep this as the default (unsecure) is up to you. This will be the username and password required to access the shared folder.
   - Restart your samba service with `sudo /etc/init.d/smbd stop` then `sudo /etc/init.d/smbd start` (or just reboot with `sudo reboot`)
-  - You can should now be able to access your networked drive. 
-  -You can access the server from your iPhone as well. You wil l need the IP address of your Raspberry Pi, you can find this by using the command`sudo hostname -I` . Once you have the IP address open the file app and sellect "Connect to server" from the top-right menu. From there enter `smb://[your ip]` and the credentials.
+  - You should now be able to access your networked drive. 
+  - You can access the server from your iPhone as well. 
+    - Use `sudo hostname -I` to find the IP address for your Raspberry pi.
+    - Make sure your iPhone is connected to the same WiFi network as your Raspberry Pi
+    - Open the Files app on your iphone and select "Connect to server" from the top-right menu.
+    - Enter `smb://[your Pi's ip]`(eg smb://190.111.2.333) into the Server field and then use the Samba user credentials you just set up.
   -On Windows, enter \\gifcam into your explorer address bar and you should be prompted for the **samba** username and password you created earlier.
 
 
