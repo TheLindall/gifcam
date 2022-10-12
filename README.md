@@ -1,8 +1,8 @@
 ## What's this version got?
 This a minor de-update based on Nick and Michael's work. 
 - I've removed the Twitter integration of the original projects
-- I've added the hardware controls to change behaviors 
-- I've added intructions to downlaod your GIFs straight to your Iphone
+- I've added the hardware controls to change cmaera behaviors 
+- I've added intructions to download your GIFs straight to your iPhone
 - Used newer hardware (Rapberry Pi Zero W 2)
 - Used newer software (Raspberry Pi OS Legacy Light - Buster)   
 
@@ -23,24 +23,29 @@ If you want to see the orginal project and build instructions see here (https://
 - The GIF can be made to run START => END or "rebound" START <=> END
 - Status LEDs keep the user informed as to what's going on
 
+## Camera hardware requirements
+The code assumes a few things about your camera's design:
+- There us a front facing LED (recording LED) (This was added so your subjects know when you are recording)
+- There is a operator facing LED (status LED) (this was added so it was easier to see the status on a bright sunny day)
+- There is a LED in the shutter button
+- There are 4 switches for controlling features
+
 ## How to Use the Camera
 - Power on the camera.
-- The button will illuminate when the camera is ready to make a GIF.
-- When you press the button, the button LED will strobe to indicate that the camera is recording.
-- When recording finishes, the button LED will switch off.
-- The status LED will blink while the GIF is being processed (and optionally, tweeted)
-- When processing is finished, the camera will return to the READY state, and the button LED will illuminate.
+- The shutter and status LEDs will turn on when the camera is ready to make a GIF.
+- WHen you press the shutter button the recording LED will turn on solid, the status and shutter button will begin to blink while capturing. 
+- When recording finishes, the status LED will blink rapidly, indicating it processing.
+- When processing is finished, the camera will return to the READY state, and the button and status LED's will turn on solid.
 
 ## Change Camera Behaviour
-The behaviour of the camera is controlled by a few _Behaviour Variables_. These are in `gifcam.py`.
-With these variables you can change the frame-number and time duration of gifs, and control tweeting behaviour.
-- `tweet = True/False` Enables or Disables an automatic tweet of the captured gif. This significantly increases the time needed in between GIF captures.
-- `num_frame` Sets the number of frames in the gif
-- `gif_delay` Sets the number of milliseconds a frame is displayed in the gif.
-- `rebound = True/False` Create a gif that loops start <=> end
+Some of the variables are tied to physical switches, these can be edited in 'gifcma.py'
+- Switch 1 : Changed the number of frames captured between 12 (off) and 24 (on)
+- Switch 2: Toggles the rebound behavior 
+- Switch 3: Toggles what effects can be applied, it modifies switch 4
+- Switch 4: Toggles the effects: If switch 3 if off (off = no fx, on = film grain), if Switch 3 is on ( off = soloraize, on = funny colorswap)
 
-For now these variables are programmed into the script, but it would be trivial to connect extra switches to your Pi that control these variables. Perhaps a rotary switch to select frame number, and sliding switches to control rebound and tweet behaviour.
-
+You can change the effects by chnaging the names in the code. For a refrence for the effects see "PiCamera.IMAGE_EFFECTS" here:
+https://picamera.readthedocs.io/en/release-1.13/api_camera.html
 
 ---
 
