@@ -1,15 +1,16 @@
 ## What's this version got?
-This a minor de-update based on Nick and Michael's work. 
-- I've removed the Twitter integration of the original projects
-- I've added the hardware controls to change cmaera behaviors 
-- I've added intructions to download your GIFs straight to your iPhone
+- Removed the Twitter integration of the original projects
+- Added the hardware controls to change cmaera behaviors 
+- Added intructions to download your GIFs straight to your iPhone
 - Used newer hardware (Rapberry Pi Zero W 2)
 - Used newer software (Raspberry Pi OS Legacy Light - Buster)   
+- Added more LEDs
+- Added hardware switches to control capture settings.
 
 If you want:
 - Auto twitter upload
 - SSH instructions 
-- A simplier setup
+- A simpler setup
 I suggest looking at the original projects by Nick (https://github.com/nickbrewer/gifcam) and <br>Micheal (https://github.com/michaelruppe/gifcam)
 
 If you want to see the orginal project and build instructions see here (https://www.hackster.io/nick-brewer/pix-e-gif-camera-323965)
@@ -18,8 +19,7 @@ If you want to see the orginal project and build instructions see here (https://
 ## Features
 - Creates a GIF at the press of a button and saves it locally
 - Access the GIFs through Samba and WiFi
-- Use buttons to change capture parameters
-  —
+- Use switches to change capture parameters
 - The GIF can be made to run START => END or "rebound" START <=> END
 - Status LEDs keep the user informed as to what's going on
 
