@@ -1,3 +1,5 @@
+#10/12/22
+
 import picamera
 from time import sleep
 import time
@@ -17,6 +19,30 @@ longTake = 24 # defines frames in a long GIF
 num_frame = 0  # stores number of frames to be captured (will be defined by short ot long take)
 gif_delay = 10  # frame delay [ms]
 rebound = False  # create a GIF that loops start <=> end
+
+# image effect attributes are grouped by number, each group is triggerd by a physical switch
+# change the values in the groups to make your own funky shooting modes
+
+#effect group 1 - basic mode
+effect1 = 'none' # change these to change the FX, see picamera.image_effect documentation to see all possible effects 
+color1 = None # normal colored images
+contrast1 = 0 # default contrast (values can be -100 to 100)
+
+#effect group 2 
+effect2 = 'film'
+color2 = (128,128) # (128,128) = B&W image
+contrast2 = 10
+
+#effect group 3
+effect3 = 'solarize'
+color3 = None
+contrast3 = 0
+
+#effect group 4
+effect4 = 'solarize'
+color4 = (128,128)
+contrast4 = 0 
+
 
 ########################
 #
@@ -68,7 +94,7 @@ styleSwitch = switch_4 #Define the swith that selects the effect (camera.effect)
 ########################
 
 camera = picamera.PiCamera()
-camera.resolution = (540, 405)
+camera.resolution = (600, 400) # alt resolution 540 x 405
 camera.rotation = 90
 #camera.brightness = 70
 
@@ -148,28 +174,40 @@ try:
 
 	    ### CHECK STATE OF HARDWARE SWITCHES ###
 
-            if GPIO.input(reboundSwitch) == True : # check rebound switch
-            	rebound = True
-            if GPIO.input(reboundSwitch) == False :
-		rebound = False
+        if GPIO.input(reboundSwitch) == True : # check rebound switch
+            rebound = True
+        if GPIO.input(reboundSwitch) == False :
+            rebound = False
 
-	    if GPIO.input(lengthSwitch) == True : # check shot length switch
-		num_frame = longTake
-	    else :
-	    	num_frame = shortTake
+        if GPIO.input(lengthSwitch) == True : # check shot length switch
+            num_frame = longTake
+        else :
+            num_frame = shortTake
 
-	    if  GPIO.input(effectSwitch) == True : # check if effect switch is on
-		if GPIO.input(styleSwitch) == True : # if on, read last switch to pick effect 
-	    		camera.image_effect = 'colorswap'
-	        else :
-			camera.image_effect = 'solarize' # you can swap these effects for others, look up the PiCamera.IMAGE_EFFECTS documentation
-	    else :
-		if GPIO.input(styleSwitch) == True : #If the effect switch is off the style switch toggles between no effect and film grain
-			camera.image_effect= 'film'
-		else :
-			camera.image_effect = 'none'
+        if  GPIO.input(effectSwitch) == True : # check if effect switch is on
+            if GPIO.input(styleSwitch) == True : # if on, read switch 4 to enable effect 3 or 4
+                # effect group 4
+                camera.color_effects = color4
+                camera.image_effect = effect4
+                camera.contrast = contrast4
+            else :
+                # effect group 3
+                camera.image_effect = effect3
+                camera.color_effects = color3
+                camera.contrast = contrast3
+        else : #if effect swith off, read switch 4 to enable effect 1 or 2
+            if GPIO.input(styleSwitch) == True :
+                # effect group 2
+                camera.image_effect = effect2
+                camera.color_effects = color2
+                camera.contrast = contrast2
+            else :
+                # effect group 1 - no effects
+                camera.image_effect = effect1
+                camera.color_effects = color1
+                camera.contrast = contrast1
 
-            sleep(0.05)
+        sleep(0.05)
 
 except:
     GPIO.cleanup()
