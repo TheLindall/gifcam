@@ -42,9 +42,9 @@ Some of the variables are tied to physical switches, these can be edited in 'gif
 - Switch 1 : Changed the number of frames captured between 12 (off) and 24 (on)
 - Switch 2: Toggles the rebound behavior 
 - Switch 3: Toggles what effects can be applied, it modifies switch 4
-- Switch 4: Toggles the effects: If switch 3 if off (off = no fx, on = film grain), if Switch 3 is on ( off = soloraize, on = funny colorswap)
+- Switch 4: Toggles the effects: If switch 3 is off (off = no fx, on = BW film grain), if Switch 3 is on ( off = soloraize, on = BW solarize)
 
-You can change the effects by chnaging the names in the code. For a refrence of the possible effects see "PiCamera.IMAGE_EFFECTS" here:
+You can change the effects by changing the names and values in the code. For a refrence of the possible effects see "PiCamera.IMAGE_EFFECTS" here:
 https://picamera.readthedocs.io/en/release-1.13/api_camera.html
 
 ---
