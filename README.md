@@ -94,7 +94,7 @@ Use the following commands to get GifCam up and running
     - Use `sudo hostname -I` to find the IP address for your Raspberry pi.
     - Make sure your iPhone is connected to the same WiFi network as your Raspberry Pi
     - Open the Files app on your iphone and select "Connect to server" from the top-right menu.
-    - Enter "smb://[your Pi's IP here]" into the Server field and then use the Samba user credentials you just set up.
+    - Enter "smb://your Pi's IP here" into the Server field and then use the Samba user credentials you just set up.
     - This can be a bit finicky, you may need to close the files app, or eject and re-connect to the server. 
   - On Windows, enter \\gifcam into your explorer address bar and you should be prompted for the **samba** username and password you created earlier.
 
